@@ -50,6 +50,7 @@ MAX_WAIT=15
 # On start up we need to know whether we can join already running nodes.
 JOIN_STRING=""
 STORE_PATH=${STORE_PATH:-"/cockroach/cockroach-data/${NODE_NAME}"}
+MAX_MEMORY=${MAX_MEMORY:-"300000000"}
 
 if [ "${LEADER_NAME}" = "${NODE_NAME}" ]
 then
@@ -95,6 +96,6 @@ ip=$(ip addr show dev eth0 | grep inet | grep eth0 | awk '{print$2}' | cut -d/ -
 
 #
 # Start the node.
-exec /cockroach/cockroach start --insecure --host=${ip} --store=${STORE_PATH} ${JOIN_STRING} ${CMD} $@
+exec /cockroach/cockroach start --insecure --host=${ip} --store=${STORE_PATH} --max-sql-memory ${MAX_MEMORY} ${JOIN_STRING} ${CMD} $@
 
 echo "Background cockroach process finished, shutting down node."

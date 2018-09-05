@@ -6,5 +6,7 @@ RUN apt-get update && apt-get -y install curl dnsutils
 
 COPY run.sh /cockroach
 
+ENV MAX_MEMORY 300000000
+
 VOLUME ["/cockroach/cockroach-data/cockroach"]
 ENTRYPOINT ["/cockroach/run.sh"]
