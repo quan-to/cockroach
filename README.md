@@ -1,2 +1,2 @@
 # cockroach
-Cockroach DB Optmized for Rancher
+Cockroach DB Optimized for Rancher
